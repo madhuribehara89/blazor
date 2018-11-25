@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  stack.test.client.webapi:
+    image: ${DOCKER_REGISTRY-}stacktestclientwebapi
+    build:
+      context: .
+      dockerfile: Stack.Test.Client.WebAPI/Dockerfile
+  stack.test.client.blazorapp:
+    image: ${DOCKER_REGISTRY-}stacktestclientblazorapp
+    build:
+      context: .
+      dockerfile: Stack.Test.Client.BlazorApp/Docker/Dockerfile
+

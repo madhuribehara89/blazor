@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Stacl.Test.Shared\Stacl.Test.Shared.csproj" />
+    <ProjectReference Include="..\Stack.Test.Shared\Stack.Test.Shared.csproj" />
   </ItemGroup>
 
 </Project>

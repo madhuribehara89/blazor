@@ -1,0 +1,39 @@
+﻿@page "/callwebapi"
+@inject HttpClient Http
+
+<h1>Calling webapi</h1>
+
+<p>Calling webapi</p>
+
+@if (responses == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var response in responses)
+            {
+                <tr>
+                    <td>@response.TestString</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@functions {
+Stack.Test.Shared.TestResponse[] responses;
+
+protected override async Task OnInitAsync()
+{
+    responses = await Http.GetJsonAsync<Stack.Test.Shared.TestResponse[]>("https://localhost:44350/api/values");
+    Console.WriteLine($"Response count: {responses.Count()}");
+}
+}

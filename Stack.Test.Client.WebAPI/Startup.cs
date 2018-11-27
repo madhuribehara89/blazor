@@ -26,6 +26,7 @@ namespace Stack.Test.Client.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +41,10 @@ namespace Stack.Test.Client.WebAPI
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseCors(builder =>
+            builder.WithOrigins("http://localhost:4000")
+            );
             app.UseMvc();
         }
     }

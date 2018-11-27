@@ -12,9 +12,11 @@ namespace Stack.Test.Client.WebAPI.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(new Shared.TestResponse[] {
+                new Shared.TestResponse { TestString = "value1" },
+                new Shared.TestResponse { TestString = "value2" } });
         }
 
         // GET api/values/5
